@@ -3,7 +3,7 @@ import Recipe from "../../components/Recipe"
 import NewRecipeForm from "../../components/NewRecipeForm"
 import { IoIosAddCircle } from "react-icons/io"
 import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { AnimatePresence, motion } from "framer-motion"
 import Hero from "../../components/Hero"
 
@@ -14,7 +14,7 @@ function HomePage() {
   const [newRecipeFormVisible, setNewRecipeFormVisible] = useState(false)
   const user = useSelector((state) => state.user)
   const recipes = useSelector((state) => state.recipes)
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.URL || "localhost:3001"
 
   const getLatestRecipes = async () => {
     const res = await fetch(`http://${URL}/recipes/?limit=10&sortBy=recent`, {
