@@ -9,10 +9,10 @@ function LoginForm() {
   const isDesktop = useMediaQuery("(min-width: 768px)")
   const dispatch = useDispatch()
   const [isError, setIsError] = useState(false)
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const login = async (values) => {
-    const loggedInResponse = await fetch(`https://${URL}/auth/login`, {
+    const loggedInResponse = await fetch(`${URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

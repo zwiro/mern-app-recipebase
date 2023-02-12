@@ -12,7 +12,7 @@ module.exports = {
       },
     },
     gridTemplateColumns: {
-      fluid: "repeat(auto-fit, minmax(18rem, 1fr))",
+      fluid: "repeat(auto-fit, minmax(17rem, 1fr))",
     },
   },
   plugins: [],

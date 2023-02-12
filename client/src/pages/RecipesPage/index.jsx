@@ -15,11 +15,11 @@ function RecipesPage() {
   const [recipesCount, setRecipesCount] = useState()
   const dispatch = useDispatch()
   const recipes = useSelector((state) => state.recipes)
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(`https://${URL}/recipes/`, {
+    const res = await fetch(`${URL}/recipes/`, {
       method: "GET",
     })
     const recipes = await res.json()
@@ -91,14 +91,17 @@ function RecipesPage() {
   }, [sortBy])
 
   useEffect(() => {
-    setSkip(0)
-    setLimit(20)
     {
       if (recipes) {
         setAllRecipes(recipes.slice(skip, limit))
       }
     }
   }, [recipes])
+
+  useEffect(() => {
+    setSkip(0)
+    setLimit(20)
+  }, [sortBy])
 
   return (
     <RecipesGrid sort={sort} sortBy={sortBy} isAllRecipesPage>

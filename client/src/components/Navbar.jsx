@@ -17,11 +17,20 @@ function Navbar() {
     navigate(`/recipes/search/${searchedPhrase}`)
   }
 
+  const closeSideMenu = () => {
+    setSideMenuVisible(false)
+  }
+
   useEffect(() => {
     if (isDesktop) {
-      setSideMenuVisible(false)
+      closeSideMenu()
     }
   }, [isDesktop])
+
+  useEffect(() => {
+    document.body.addEventListener("click", closeSideMenu)
+    return () => document.body.removeEventListener("click", closeSideMenu)
+  }, [])
 
   return (
     <nav className="fixed top-0 z-30 flex w-full items-center border-b border-zinc-700 bg-zinc-800 px-6 py-4 text-sm font-bold text-light-orange lg:text-base">
@@ -41,7 +50,10 @@ function Navbar() {
         <GiHamburgerMenu
           className="ml-auto"
           size={40}
-          onClick={() => setSideMenuVisible((prevState) => !prevState)}
+          onClick={(e) => {
+            e.stopPropagation()
+            setSideMenuVisible((prevState) => !prevState)
+          }}
         />
       ) : (
         <>

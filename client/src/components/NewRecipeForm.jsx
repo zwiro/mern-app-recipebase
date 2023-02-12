@@ -20,7 +20,7 @@ function NewRecipeForm({ closeForm }) {
   const token = useSelector((state) => state.token)
   const dispatch = useDispatch()
   const options = cuisines.sort((a, b) => a.value.localeCompare(b.value))
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const addRecipe = async (values) => {
     setIsLoading(true)
@@ -32,7 +32,7 @@ function NewRecipeForm({ closeForm }) {
     if (formik.values.image) {
       formData.append("image", values.image.name)
     }
-    const savedRecipe = await fetch(`https://${URL}/recipes/`, {
+    const savedRecipe = await fetch(`${URL}/recipes/`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,

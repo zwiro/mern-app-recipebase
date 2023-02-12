@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setRecipe, setRecipes } from "../state"
 import "react-tooltip/dist/react-tooltip.css"
 import { Tooltip as ReactTooltip } from "react-tooltip"
+import { useEffect } from "react"
 
 function Recipe({
   _id,
@@ -19,12 +20,14 @@ function Recipe({
   comments,
   dashboard,
   type,
+  sortBy,
 }) {
   const dispatch = useDispatch()
   const userId = useSelector((state) => state.user?._id)
   const token = useSelector((state) => state.token)
+  const recipes = useSelector((state) => state.recipes)
   const navigate = useNavigate()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const item = {
     hidden: { opacity: 0 },
@@ -32,7 +35,7 @@ function Recipe({
   }
 
   const likeRecipe = async () => {
-    const res = await fetch(`https://${URL}/recipes/${_id}/like`, {
+    const res = await fetch(`${URL}/recipes/${_id}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -41,9 +44,8 @@ function Recipe({
       body: JSON.stringify({ userId }),
     })
     const updatedRecipe = await res.json()
-    dashboard
-      ? dispatch(setRecipes({ recipes: updatedRecipe }))
-      : dispatch(setRecipe({ recipe: updatedRecipe }))
+
+    dispatch(setRecipe({ recipe: updatedRecipe }))
   }
 
   return (

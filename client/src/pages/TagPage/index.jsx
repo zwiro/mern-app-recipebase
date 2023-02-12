@@ -11,11 +11,11 @@ function TagPage() {
   const recipes = useSelector((state) => state.recipes)
   const dispatch = useDispatch()
   const { tagName } = useParams()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getTaggedRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(`https://${URL}/recipes/search/?tag=${tagName}`, {
+    const res = await fetch(`${URL}/recipes/search/?tag=${tagName}`, {
       method: "GET",
     })
     const data = await res.json()

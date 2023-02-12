@@ -11,16 +11,13 @@ function CuisinePage() {
   const recipes = useSelector((state) => state.recipes)
   const dispatch = useDispatch()
   const { cuisineName } = useParams()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getCuisineRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(
-      `https://${URL}/recipes/search/?cuisine=${cuisineName}`,
-      {
-        method: "GET",
-      }
-    )
+    const res = await fetch(`${URL}/recipes/search/?cuisine=${cuisineName}`, {
+      method: "GET",
+    })
     const data = await res.json()
     dispatch(setRecipes({ recipes: data }))
     setIsLoading(false)

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 
 function Tags() {
   const [tags, setTags] = useState()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getTags = async () => {
-    const res = await fetch(`https://${URL}/recipes/tags`, {
+    const res = await fetch(`${URL}/recipes/tags`, {
       method: "GET",
     })
     const data = await res.json()

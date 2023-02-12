@@ -58,7 +58,7 @@ function RecipesGrid({
       </AnimatePresence>
       {isAllRecipesPage && <Tags />}
       {isAllRecipesPage && <Sorting sort={sort} sortBy={sortBy} />}
-      <div className="m-3 rounded bg-zinc-900 p-8 shadow-inner shadow-black">
+      <div className="m-3 rounded bg-zinc-900 p-2 shadow-inner shadow-black sm:p-4 md:p-8">
         <h2 className="my-2 text-lg font-bold text-light-orange">
           {isFavouritesPage
             ? "Your favourites"

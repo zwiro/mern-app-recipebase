@@ -27,11 +27,11 @@ function RecipePage() {
   const token = useSelector((state) => state.token)
   const isRecipeAuthor = Boolean(recipe.author?._id === userId)
   const [isLoading, setIsLoading] = useState(false)
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getRecipe = async () => {
     setIsLoading(true)
-    const res = await fetch(`https://${URL}/recipes/${recipeId}`, {
+    const res = await fetch(`${URL}/recipes/${recipeId}`, {
       method: "GET",
     })
     const data = await res.json()
@@ -43,7 +43,7 @@ function RecipePage() {
   }
 
   const likeRecipe = async () => {
-    const res = await fetch(`https://${URL}/recipes/${recipeId}/like`, {
+    const res = await fetch(`${URL}/recipes/${recipeId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ function RecipePage() {
   }
 
   const starRecipe = async () => {
-    const res = await fetch(`https://${URL}/recipes/${recipeId}/favourite`, {
+    const res = await fetch(`${URL}/recipes/${recipeId}/favourite`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ function RecipePage() {
   }
 
   const deleteRecipe = async () => {
-    await fetch(`https://${URL}/recipes/${recipeId}`, {
+    await fetch(`${URL}/recipes/${recipeId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -77,7 +77,7 @@ function RecipePage() {
   }
 
   const incrementViews = async () => {
-    const res = await fetch(`https://${URL}/recipes/${recipeId}/view`, {
+    const res = await fetch(`${URL}/recipes/${recipeId}/view`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,

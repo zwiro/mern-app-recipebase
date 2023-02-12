@@ -11,14 +11,14 @@ function Comments({ children, setRecipe }) {
   const token = useSelector((state) => state.token)
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const addComment = async (e) => {
     e.preventDefault()
     if (comment) {
       setIsLoading(true)
       const date = new Date()
-      const res = await fetch(`https://${URL}/recipes/${recipeId}/comment`, {
+      const res = await fetch(`${URL}/recipes/${recipeId}/comment`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

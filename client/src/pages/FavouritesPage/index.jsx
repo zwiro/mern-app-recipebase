@@ -11,11 +11,11 @@ function FavouritesPage() {
   const token = useSelector((state) => state.token)
   const recipes = useSelector((state) => state.recipes)
   const dispatch = useDispatch()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getUserFavouriteRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(`https://${URL}/users/${user._id}/favourites`, {
+    const res = await fetch(`${URL}/users/${user._id}/favourites`, {
       method: "GET",
       headers: { Authorization: `Bearer: ${token}` },
     })

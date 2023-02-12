@@ -10,7 +10,7 @@ import { useState } from "react"
 function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const register = async (values) => {
     setIsLoading(true)
@@ -21,7 +21,7 @@ function RegisterPage() {
     if (formik.values.image) {
       formData.append("image", values.image.name)
     }
-    const savedUserResponse = await fetch(`https://${URL}/auth/register`, {
+    const savedUserResponse = await fetch(`${URL}/auth/register`, {
       method: "POST",
       body: formData,
     })

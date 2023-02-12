@@ -21,7 +21,7 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
   const dispatch = useDispatch()
   const { recipeId } = useParams()
   const token = useSelector((state) => state.token)
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const editRecipe = async (values) => {
     setIsLoading(true)
@@ -32,7 +32,7 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
     if (formik.values.newImage) {
       formData.append("newImage", values.newImage.name)
     }
-    const savedRecipe = await fetch(`https://${URL}/recipes/${recipeId}`, {
+    const savedRecipe = await fetch(`${URL}/recipes/${recipeId}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

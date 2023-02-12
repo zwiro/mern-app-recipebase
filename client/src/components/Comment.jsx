@@ -13,10 +13,10 @@ function Comment({ author, comment, date, id, setRecipe }) {
   const userId = useSelector((state) => state.user?._id)
   const isCommentAuthor = Boolean(userId === author._id)
   const dispatch = useDispatch()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const deleteComment = async (commentId) => {
-    const res = await fetch(`https://${URL}/recipes/${recipeId}/${commentId}`, {
+    const res = await fetch(`${URL}/recipes/${recipeId}/${commentId}`, {
       method: "PATCH",
       headers: { Authorization: `Bearer ${token}` },
     })

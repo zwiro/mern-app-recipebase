@@ -21,7 +21,7 @@ function ProfilePage() {
   const { userId } = useParams()
   const [profile, setProfile] = useState({})
   const navigate = useNavigate()
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const container = {
     hidden: { opacity: 0 },
@@ -34,7 +34,7 @@ function ProfilePage() {
   }
 
   const getUser = async () => {
-    const res = await fetch(`https://${URL}/users/${userId}`, {
+    const res = await fetch(`${URL}/users/${userId}`, {
       method: "GET",
     })
     const data = await res.json()
@@ -45,7 +45,7 @@ function ProfilePage() {
   }
 
   const getUserRecipes = async () => {
-    const res = await fetch(`https://${URL}/users/${userId}/recipes`, {
+    const res = await fetch(`${URL}/users/${userId}/recipes`, {
       method: "GET",
     })
     const data = await res.json()

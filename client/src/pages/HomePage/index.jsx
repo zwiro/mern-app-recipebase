@@ -14,10 +14,10 @@ function HomePage() {
   const [newRecipeFormVisible, setNewRecipeFormVisible] = useState(false)
   const user = useSelector((state) => state.user)
   const recipes = useSelector((state) => state.recipes)
-  const URL = import.meta.env.VITE_URL
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getLatestRecipes = async () => {
-    const res = await fetch(`https://${URL}/recipes/?limit=10&sortBy=recent`, {
+    const res = await fetch(`${URL}/recipes/?limit=10&sortBy=recent`, {
       method: "GET",
     })
     const data = await res.json()
@@ -25,7 +25,7 @@ function HomePage() {
   }
 
   const getPopularRecipes = async () => {
-    const res = await fetch(`https://${URL}/recipes/?limit=10&sortBy=views`, {
+    const res = await fetch(`${URL}/recipes/?limit=10&sortBy=views`, {
       method: "GET",
     })
     const data = await res.json()
@@ -70,7 +70,7 @@ function HomePage() {
       <Recipes title="Latest recipes">
         {latestRecipes.length &&
           latestRecipes.map((recipe) => (
-            <Recipe {...recipe} key={recipe._id} type="popular" dashboard />
+            <Recipe {...recipe} key={recipe._id} type="latest" dashboard />
           ))}
       </Recipes>
       <Recipes title="Most popular recipes">

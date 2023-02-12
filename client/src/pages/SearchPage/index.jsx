@@ -11,16 +11,13 @@ function SearchPage() {
   const recipes = useSelector((state) => state.recipes)
   const { searchedPhrase } = useParams()
   const [isLoading, setIsLoading] = useState(false)
-  const URL = import.meta.env.VITE_URL || "localhost:3001"
+  const URL = import.meta.env.VITE_URL || "http://localhost:3001"
 
   const getSearchedRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(
-      `https://${URL}/recipes/search/?search=${searchedPhrase}`,
-      {
-        method: "GET",
-      }
-    )
+    const res = await fetch(`${URL}/recipes/search/?search=${searchedPhrase}`, {
+      method: "GET",
+    })
     const data = await res.json()
     dispatch(setRecipes({ recipes: data }))
     setIsLoading(false)
