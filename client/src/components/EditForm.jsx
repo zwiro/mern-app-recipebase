@@ -199,7 +199,7 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
                     type="text"
                     name="tags"
                     placeholder="Tags"
-                    onChange={(e) => setTag(e.target.value)}
+                    onChange={(e) => setTag(e.target.value.replace(/[,]/g, ""))}
                     className="rounded border border-zinc-700 bg-zinc-800 p-2"
                     value={tag}
                     onBlur={formik.handleBlur}
@@ -242,7 +242,9 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
                   type="text"
                   name="ingredients"
                   placeholder="Ingredients"
-                  onChange={(e) => setIngredient(e.target.value)}
+                  onChange={(e) =>
+                    setIngredient(e.target.value.replace(/[,]/g, ""))
+                  }
                   className="rounded border border-zinc-700 bg-zinc-800 p-2"
                   value={ingredient}
                   onBlur={formik.handleBlur}

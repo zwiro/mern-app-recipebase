@@ -192,7 +192,7 @@ function NewRecipeForm({ closeForm }) {
             type="text"
             name="ingredients"
             placeholder="4 garlic cloves"
-            onChange={(e) => setIngredient(e.target.value)}
+            onChange={(e) => setIngredient(e.target.value.replace(/[,]/g, ""))}
             className="my-1 rounded border border-zinc-700 bg-zinc-800 p-2"
             value={ingredient}
             onBlur={formik.handleBlur}
@@ -305,7 +305,7 @@ function NewRecipeForm({ closeForm }) {
             type="text"
             name="tags"
             placeholder="vegan"
-            onChange={(e) => setTag(e.target.value)}
+            onChange={(e) => setTag(e.target.value.replace(/[,]/g, ""))}
             className="my-1 rounded border border-zinc-700 bg-zinc-800 p-2"
             value={tag}
             onBlur={formik.handleBlur}
