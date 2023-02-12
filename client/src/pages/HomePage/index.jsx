@@ -14,7 +14,7 @@ function HomePage() {
   const [newRecipeFormVisible, setNewRecipeFormVisible] = useState(false)
   const user = useSelector((state) => state.user)
   const recipes = useSelector((state) => state.recipes)
-  const URL = import.meta.env.URL
+  const URL = import.meta.env.VITE_URL
 
   const getLatestRecipes = async () => {
     const res = await fetch(`http://${URL}/recipes/?limit=10&sortBy=recent`, {
