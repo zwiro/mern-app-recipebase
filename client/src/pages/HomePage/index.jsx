@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { AnimatePresence, motion } from "framer-motion"
 import Hero from "../../components/Hero"
+import RecipePlaceholder from "../../components/RecipePlaceholder"
 
 function HomePage() {
   const [popularRecipes, setPopularRecipes] = useState([])
@@ -68,16 +69,22 @@ function HomePage() {
         )}
       </AnimatePresence>
       <Recipes title="Latest recipes">
-        {latestRecipes.length &&
+        {latestRecipes.length ? (
           latestRecipes.map((recipe) => (
             <Recipe {...recipe} key={recipe._id} type="latest" dashboard />
-          ))}
+          ))
+        ) : (
+          <RecipePlaceholder />
+        )}
       </Recipes>
       <Recipes title="Most popular recipes">
-        {popularRecipes.length &&
+        {popularRecipes.length ? (
           popularRecipes.map((recipe) => (
             <Recipe {...recipe} key={recipe._id} type="popular" dashboard />
-          ))}
+          ))
+        ) : (
+          <RecipePlaceholder />
+        )}
       </Recipes>
     </motion.div>
   )
