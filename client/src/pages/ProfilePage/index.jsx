@@ -15,6 +15,8 @@ function ProfilePage() {
   const [isLoading, setIsLoading] = useState(false)
   const closeForm = () => setNewRecipeFormVisible(false)
   const [newRecipeFormVisible, setNewRecipeFormVisible] = useState(false)
+  const [userLikes, setUserLikes] = useState([])
+  const [userComments, setUserComments] = useState([])
   const dispatch = useDispatch()
   const recipes = useSelector((state) => state.recipes)
   const user = useSelector((state) => state.user)
@@ -44,6 +46,18 @@ function ProfilePage() {
     setProfile(data)
   }
 
+  const getUserLikes = async () => {
+    const res = await fetch(`${URL}/users/${userId}/likes`)
+    const data = await res.json()
+    setUserLikes(data)
+  }
+
+  const getUserComments = async () => {
+    const res = await fetch(`${URL}/users/${userId}/comments`)
+    const data = await res.json()
+    setUserComments(data)
+  }
+
   const getUserRecipes = async () => {
     const res = await fetch(`${URL}/users/${userId}/recipes`, {
       method: "GET",
@@ -55,6 +69,8 @@ function ProfilePage() {
   useEffect(() => {
     getUser()
     getUserRecipes()
+    getUserLikes()
+    getUserComments()
   }, [userId])
 
   return (
@@ -100,17 +116,26 @@ function ProfilePage() {
         <div className="flex flex-col items-center gap-4 md:ml-auto lg:flex-row">
           <p className="lg:-translate-y-12">
             <AiFillPlusCircle className="mr-2 inline text-xl text-light-orange" />{" "}
-            Added <span className="font-bold text-light-orange">38</span>{" "}
+            Added{" "}
+            <span className="font-bold text-light-orange">
+              {recipes.length}
+            </span>{" "}
             recipes
           </p>
           <p>
             <AiFillHeart className="mr-2 inline text-xl text-red-500" />{" "}
             Liked&nbsp;
-            <span className="font-bold text-red-500">38</span> recipes
+            <span className="font-bold text-red-500">
+              {userLikes.count}
+            </span>{" "}
+            recipes
           </p>
           <p className="lg:translate-y-12">
             <BiComment className="mr-2 inline text-xl text-blue-500" />{" "}
-            Commented <span className="font-bold text-blue-500">38</span>{" "}
+            Commented{" "}
+            <span className="font-bold text-blue-500">
+              {userComments.count}
+            </span>{" "}
             recipes
           </p>
         </div>
