@@ -32,7 +32,7 @@ function Recipe({
   }
 
   const likeRecipe = async () => {
-    const res = await fetch(`http://${URL}/recipes/${_id}/like`, {
+    const res = await fetch(`https://${URL}/recipes/${_id}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,

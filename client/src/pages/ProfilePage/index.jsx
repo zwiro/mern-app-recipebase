@@ -34,7 +34,7 @@ function ProfilePage() {
   }
 
   const getUser = async () => {
-    const res = await fetch(`http://${URL}/users/${userId}`, {
+    const res = await fetch(`https://${URL}/users/${userId}`, {
       method: "GET",
     })
     const data = await res.json()
@@ -45,7 +45,7 @@ function ProfilePage() {
   }
 
   const getUserRecipes = async () => {
-    const res = await fetch(`http://${URL}/users/${userId}/recipes`, {
+    const res = await fetch(`https://${URL}/users/${userId}/recipes`, {
       method: "GET",
     })
     const data = await res.json()

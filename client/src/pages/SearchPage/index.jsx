@@ -16,7 +16,7 @@ function SearchPage() {
   const getSearchedRecipes = async () => {
     setIsLoading(true)
     const res = await fetch(
-      `http://${URL}/recipes/search/?search=${searchedPhrase}`,
+      `https://${URL}/recipes/search/?search=${searchedPhrase}`,
       {
         method: "GET",
       }

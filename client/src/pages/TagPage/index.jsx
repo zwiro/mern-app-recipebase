@@ -15,7 +15,7 @@ function TagPage() {
 
   const getTaggedRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(`http://${URL}/recipes/search/?tag=${tagName}`, {
+    const res = await fetch(`https://${URL}/recipes/search/?tag=${tagName}`, {
       method: "GET",
     })
     const data = await res.json()

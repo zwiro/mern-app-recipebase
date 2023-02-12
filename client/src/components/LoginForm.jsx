@@ -12,7 +12,7 @@ function LoginForm() {
   const URL = import.meta.env.VITE_URL || "localhost:3001"
 
   const login = async (values) => {
-    const loggedInResponse = await fetch(`http://${URL}/auth/login`, {
+    const loggedInResponse = await fetch(`https://${URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

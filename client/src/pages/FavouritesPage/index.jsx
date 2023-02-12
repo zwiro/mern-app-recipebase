@@ -15,7 +15,7 @@ function FavouritesPage() {
 
   const getUserFavouriteRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(`http://${URL}/users/${user._id}/favourites`, {
+    const res = await fetch(`https://${URL}/users/${user._id}/favourites`, {
       method: "GET",
       headers: { Authorization: `Bearer: ${token}` },
     })

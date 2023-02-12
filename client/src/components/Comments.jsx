@@ -18,7 +18,7 @@ function Comments({ children, setRecipe }) {
     if (comment) {
       setIsLoading(true)
       const date = new Date()
-      const res = await fetch(`http://${URL}/recipes/${recipeId}/comment`, {
+      const res = await fetch(`https://${URL}/recipes/${recipeId}/comment`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

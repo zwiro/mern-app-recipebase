@@ -16,7 +16,7 @@ function Comment({ author, comment, date, id, setRecipe }) {
   const URL = import.meta.env.VITE_URL || "localhost:3001"
 
   const deleteComment = async (commentId) => {
-    const res = await fetch(`http://${URL}/recipes/${recipeId}/${commentId}`, {
+    const res = await fetch(`https://${URL}/recipes/${recipeId}/${commentId}`, {
       method: "PATCH",
       headers: { Authorization: `Bearer ${token}` },
     })

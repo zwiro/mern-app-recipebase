@@ -6,7 +6,7 @@ function Tags() {
   const URL = import.meta.env.VITE_URL || "localhost:3001"
 
   const getTags = async () => {
-    const res = await fetch(`http://${URL}/recipes/tags`, {
+    const res = await fetch(`https://${URL}/recipes/tags`, {
       method: "GET",
     })
     const data = await res.json()

@@ -32,7 +32,7 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
     if (formik.values.newImage) {
       formData.append("newImage", values.newImage.name)
     }
-    const savedRecipe = await fetch(`http://${URL}/recipes/${recipeId}`, {
+    const savedRecipe = await fetch(`https://${URL}/recipes/${recipeId}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,

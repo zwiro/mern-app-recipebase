@@ -17,7 +17,7 @@ function HomePage() {
   const URL = import.meta.env.VITE_URL
 
   const getLatestRecipes = async () => {
-    const res = await fetch(`http://${URL}/recipes/?limit=10&sortBy=recent`, {
+    const res = await fetch(`https://${URL}/recipes/?limit=10&sortBy=recent`, {
       method: "GET",
     })
     const data = await res.json()
@@ -25,7 +25,7 @@ function HomePage() {
   }
 
   const getPopularRecipes = async () => {
-    const res = await fetch(`http://${URL}/recipes/?limit=10&sortBy=views`, {
+    const res = await fetch(`https://${URL}/recipes/?limit=10&sortBy=views`, {
       method: "GET",
     })
     const data = await res.json()

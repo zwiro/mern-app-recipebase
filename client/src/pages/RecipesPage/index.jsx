@@ -19,7 +19,7 @@ function RecipesPage() {
 
   const getRecipes = async () => {
     setIsLoading(true)
-    const res = await fetch(`http://${URL}/recipes/`, {
+    const res = await fetch(`https://${URL}/recipes/`, {
       method: "GET",
     })
     const recipes = await res.json()

@@ -21,7 +21,7 @@ function RegisterPage() {
     if (formik.values.image) {
       formData.append("image", values.image.name)
     }
-    const savedUserResponse = await fetch(`http://${URL}/auth/register`, {
+    const savedUserResponse = await fetch(`https://${URL}/auth/register`, {
       method: "POST",
       body: formData,
     })

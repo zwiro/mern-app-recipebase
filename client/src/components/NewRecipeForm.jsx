@@ -32,7 +32,7 @@ function NewRecipeForm({ closeForm }) {
     if (formik.values.image) {
       formData.append("image", values.image.name)
     }
-    const savedRecipe = await fetch(`http://${URL}/recipes/`, {
+    const savedRecipe = await fetch(`https://${URL}/recipes/`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
