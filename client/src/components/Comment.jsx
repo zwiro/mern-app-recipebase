@@ -27,7 +27,7 @@ function Comment({ author, comment, date, id, setRecipe }) {
   return (
     <motion.div
       animate={{ height: [0, 100] }}
-      className="group mx-16 mt-2 flex flex-col"
+      className="group mt-2 flex flex-col lg:mx-16"
     >
       <div className="mb-2 flex items-center gap-2">
         <Link to={`/users/${author._id}`}>
