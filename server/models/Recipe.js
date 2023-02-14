@@ -8,6 +8,7 @@ const RecipeSchema = new mongoose.Schema(
     },
     title: {
       type: String,
+      trim: true,
       required: true,
     },
     cuisine: String,
@@ -26,6 +27,7 @@ const RecipeSchema = new mongoose.Schema(
     },
     description: {
       type: String,
+      trim: true,
       required: true,
     },
     comments: {

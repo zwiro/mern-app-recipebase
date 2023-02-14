@@ -68,7 +68,7 @@ function RegisterPage() {
         .min(2, "Name must be at least 2 characters.")
         .required("Name is required."),
       image: yup.string(),
-      age: yup.number().trim(),
+      age: yup.number(),
       location: yup.string().trim(),
     }),
     onSubmit: (values) => register(values),
