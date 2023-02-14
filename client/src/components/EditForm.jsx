@@ -57,21 +57,24 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
       tags: recipe.tags,
     },
     validationSchema: yup.object({
-      title: yup.string().required("Title is required"),
+      title: yup.string().trim().required("Title is required"),
       cuisine: yup.string().required("Cuisine is required."),
       ingredients: yup
         .array()
-        .of(yup.string())
+        .of(yup.string().trim())
         .min(1, "Must have at least 1 ingredient"),
-      description: yup.string().required("Description is required."),
-      tags: yup.array().of(yup.string()).min(1, "Must have at least 1 tag"),
+      description: yup.string().trim().required("Description is required."),
+      tags: yup
+        .array()
+        .of(yup.string().trim())
+        .min(1, "Must have at least 1 tag"),
     }),
     onSubmit: (values) => editRecipe(values),
   })
 
   const addIngredient = (e) => {
     e.preventDefault()
-    if (ingredient) {
+    if (ingredient.trim()) {
       setIngredients((prevIngredients) => [...prevIngredients, ingredient])
       setIngredient("")
       formik.setFieldValue("ingredients", [
@@ -93,7 +96,7 @@ function EditForm({ recipe, setIsEditing, setRecipe }) {
 
   const addTag = (e) => {
     e.preventDefault()
-    if (tag) {
+    if (tag.trim()) {
       setTags((prevTags) => [...prevTags, tag[0] === "#" ? tag.slice(1) : tag])
       setTag("")
       formik.setFieldValue("tags", [

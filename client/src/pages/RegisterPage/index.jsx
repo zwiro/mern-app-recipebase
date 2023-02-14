@@ -53,20 +53,23 @@ function RegisterPage() {
     validationSchema: yup.object({
       email: yup
         .string()
+        .trim()
         .email("Invalid email address.")
         .required("Email is required."),
       password: yup
         .string()
+        .trim()
         .min(6, "Must be at least 6 characters.")
         .max(20, "Must be 20 characters or less.")
         .required("Password is required."),
       name: yup
         .string()
+        .trim()
         .min(2, "Name must be at least 2 characters.")
         .required("Name is required."),
       image: yup.string(),
-      age: yup.number(),
-      location: yup.string(),
+      age: yup.number().trim(),
+      location: yup.string().trim(),
     }),
     onSubmit: (values) => register(values),
   })

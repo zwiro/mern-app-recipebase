@@ -15,7 +15,7 @@ function Comments({ children, setRecipe }) {
 
   const addComment = async (e) => {
     e.preventDefault()
-    if (comment) {
+    if (comment.trim()) {
       setIsLoading(true)
       const date = new Date()
       const res = await fetch(`${URL}/recipes/${recipeId}/comment`, {

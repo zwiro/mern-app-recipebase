@@ -47,7 +47,7 @@ function NewRecipeForm({ closeForm }) {
 
   const addIngredient = (e) => {
     e.preventDefault()
-    if (ingredient) {
+    if (ingredient.trim()) {
       setIngredients((prevIngredients) => [...prevIngredients, ingredient])
       setIngredient("")
       formik.setFieldValue("ingredients", [
@@ -69,7 +69,7 @@ function NewRecipeForm({ closeForm }) {
 
   const addTag = (e) => {
     e.preventDefault()
-    if (tag) {
+    if (tag.trim()) {
       setTags((prevTags) => [...prevTags, tag[0] === "#" ? tag.slice(1) : tag])
       setTag("")
       formik.setFieldValue("tags", [
@@ -97,15 +97,18 @@ function NewRecipeForm({ closeForm }) {
       tags: [],
     },
     validationSchema: yup.object({
-      title: yup.string().required("Title is required"),
+      title: yup.string().trim().required("Title is required"),
       cuisine: yup.string().required("Cuisine is required."),
       ingredients: yup
         .array()
-        .of(yup.string())
+        .of(yup.string().trim())
         .min(1, "Must have at least one ingredient"),
-      description: yup.string().required("Description is required."),
+      description: yup.string().trim().required("Description is required."),
       image: yup.string().required("Image is required."),
-      tags: yup.array().of(yup.string()).min(1, "Must have at least one tag"),
+      tags: yup
+        .array()
+        .of(yup.string().trim())
+        .min(1, "Must have at least one tag"),
     }),
     onSubmit: (values) => addRecipe(values),
   })
