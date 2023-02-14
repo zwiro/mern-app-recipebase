@@ -126,7 +126,7 @@ function ProfilePage() {
             <AiFillHeart className="mr-2 inline text-xl text-red-500" />{" "}
             Liked&nbsp;
             <span className="font-bold text-red-500">
-              {userLikes.count}
+              {userLikes.count ? userLikes.count : "0"}
             </span>{" "}
             recipes
           </p>
