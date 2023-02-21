@@ -25,7 +25,7 @@ function TagPage() {
 
   useEffect(() => {
     getTaggedRecipes()
-  }, [])
+  }, [tagName])
 
   return (
     <RecipesGrid isTagPage tagName={tagName}>
