@@ -13,7 +13,7 @@
 * Express
 * MongoDB
 * Cloudinary
-* Redux-toolkit
+* Redux-Toolkit
 * Tailwind
 
 
@@ -43,6 +43,7 @@
 
 ## Lessons Learned
 
-* Animating with framer-motion
-* Form validation with formik and yup
-* Uploading images with react-dropzone
+* State management with Redux-Toolkit
+* Animating with Framer Motion
+* Form validation with Formik and Yup
+* Uploading images with React-Dropzone
