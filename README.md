@@ -6,7 +6,6 @@
  This is my fullstack application which includes user authorization and CRUD operations on recipes.
  
 
-
 ## Technologies used
 
 * React
@@ -18,10 +17,21 @@
 * Tailwind
 
 
-
 ## Demo
 
 [Live Site](https://recipebase-7qn0.onrender.com/)
+
+
+## Features
+
+* Authentication
+* CRUD operations on recipes
+* Adding likes and comments
+* Adding recipes to favourites
+* Searching by keyword
+* Sorting by recently added, most likes, most viewed and most commented
+* Browsing by favourites, tags and types of cuisines
+* User profiles with user's activity statistics and listed recipes added by this user
 
 
 ## Screenshots
