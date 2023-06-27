@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.1.4",
     "formik": "^2.2.9",
     "framer-motion": "^8.5.5",
     "react": "^18.2.0",
