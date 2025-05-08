@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.2",
+    "@reduxjs/toolkit": "^2.0.0",
     "dotenv": "^16.0.3",
     "formik": "^2.2.9",
     "framer-motion": "^8.5.5",
@@ -17,13 +17,13 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-icons": "^4.7.1",
-    "react-redux": "^8.0.5",
+    "react-redux": "^9.0.0",
     "react-router-dom": "^6.8.0",
     "react-select": "^5.7.0",
     "react-toastify": "^9.1.1",
     "react-tooltip": "^5.7.4",
     "redux-persist": "^6.0.0",
-    "yup": "^0.32.11"
+    "yup": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
